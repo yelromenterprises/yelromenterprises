@@ -1,62 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yelrom Enterprises</title>
   <style>
     /* Reset & Base */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#333; line-height:1.6; }
-    a { color:#008b8b; text-decoration:none; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #008b8b;
+      text-decoration: none;
+    }
 
     /* Header */
-    header { background:#fff; padding:20px 0; box-shadow:0 2px 4px rgba(0,0,0,0.1); position:fixed; width:100%; top:0; z-index:100; }
-    .container { width:90%; max-width:1000px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
-    .branding { display:flex; align-items:center; }
-    .logo { height:50px; }
-    .site-title { margin-left:12px; font-size:1.5rem; font-weight:600; }
-    .site-title .yelrom-text { color:#008b8b; /* teal */ }
-    .site-title .enterprises-text { color:#ff8c00; /* orange */ }
+    header {
+      background: #fff;
+      padding: 20px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
 
-    nav ul { list-style:none; display:flex; }
-    nav li { margin-left:20px; }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .branding {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .site-title {
+      margin-left: 12px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .site-title .yelrom-text {
+      color: #008b8b;
+      /* teal */
+    }
+
+    .site-title .enterprises-text {
+      color: #ff8c00;
+      /* orange */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav li {
+      margin-left: 20px;
+    }
 
     /* Main */
-    main { padding-top:100px; }
+    main {
+      padding-top: 100px;
+    }
 
     /* Hero */
-    #hero { display:flex; flex-direction:column; align-items:center; text-align:center; padding:100px 0; background:#f9f9f9; background-image: url(banner.png);}
-    #hero p { font-size: 2.525rem;
-        color: #ff8c00; max-width:600px; }
+    #hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 100px 0;
+      background: #f9f9f9;
+      background-image: url(banner.png);
+    }
+
+    #hero p {
+      font-size: 2.525rem;
+      color: #ff8c00;
+      max-width: 600px;
+    }
 
     /* Services */
-    #services { padding:80px 0; }
-    #services h2 { text-align:center; font-size:2rem; margin-bottom:40px; color:#008b8b; }
-    .services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
-    .service { background:#fff; border-radius:8px; padding:20px; box-shadow:0 2px 4px rgba(0,0,0,0.05); text-align:center; }
-    .service h3 { margin-bottom:15px; color:#333; }
-    .service p { color:#666; }
+    #services {
+      padding: 80px 0;
+    }
+
+    #services h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #008b8b;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .service {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .service h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .service p {
+      color: #666;
+    }
+
+    #services {
+      padding: 80px 0;
+      background: #f1fdfa;
+    }
+
+    /* Clickable Service Cards */
+    .service {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .service:hover,
+    .service:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* “Learn More” Button */
+    .btn-service {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: #008b8b;
+      color: #fff;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .service:hover .btn-service {
+      background: #006f6f;
+    }
+
+    /* Responsive Grid & Spacing */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width:600px) {
+      .services-grid {
+        gap: 16px;
+      }
+
+      .service {
+        padding: 16px;
+      }
+    }
 
     /* Contact */
-    #contact { background:#008b8b; color:#fff; text-align:center; padding:80px 0; }
-    #contact h2 { font-size:2rem; margin-bottom:20px; }
-    #contact p { margin-bottom:10px; }
-    .btn { display:inline-block; padding:12px 30px; background:#ff8c00; color:#fff; border-radius:4px; transition:background .3s; }
-    .btn:hover { background:#e07b00; }
+    #contact {
+      background: #008b8b;
+      color: #fff;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    #contact h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    #contact p {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #ff8c00;
+      color: #fff;
+      border-radius: 4px;
+      transition: background .3s;
+    }
+
+    .btn:hover {
+      background: #e07b00;
+    }
 
     /* Footer */
-    footer { text-align:center; padding:20px 0; font-size:.9rem; color:#aaa; }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      font-size: .9rem;
+      color: #aaa;
+    }
 
     /* Responsive Nav */
     @media(max-width:600px) {
-      .container { flex-direction:column; }
-      .branding { margin-bottom:15px; }
-      nav ul { flex-direction:column; }
-      nav li { margin:10px 0; }
+      .container {
+        flex-direction: column;
+      }
+
+      .branding {
+        margin-bottom: 15px;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav li {
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -80,33 +282,34 @@
 
   <main>
     <section id="hero">
-      <p>Delivering innovative digital solutions and expert consulting to help your business thrive in the modern world.</p>
+      <p>Delivering innovative digital solutions and expert consulting to help your business thrive in the modern world.
+      </p>
     </section>
 
     <section id="services">
       <div class="container">
         <h2>Our Services</h2>
         <div class="services-grid">
-          <div class="service">
-            <h3>Custom Software Development</h3>
-            <p>Bespoke web and mobile applications tailored to your unique needs.</p>
-          </div>
-          <div class="service">
-            <h3>AI &amp; Data Analytics</h3>
-            <p>Intelligent solutions leveraging AI and machine learning for actionable insights.</p>
-          </div>
-          <div class="service">
-            <h3>Health Information Systems</h3>
-            <p>EMR and DHIS2 integration for efficient healthcare data management.</p>
-          </div>
-          <div class="service">
-            <h3>Cloud &amp; DevOps</h3>
-            <p>Scalable, secure cloud infrastructure and CI/CD pipelines for your projects.</p>
-          </div>
-          <div class="service">
-            <h3>Technical Consulting &amp; Training</h3>
-            <p>Expert guidance and hands-on workshops to empower your team.</p>
-          </div>
+          <a href="/biashara-yetu" class="service">
+            <img
+              src="https://lh3.googleusercontent.com/5F9nn3J2QHdmauFWW1oLI6U5iBR0nw4wtsh0AZQU3LLeL_QoSWTU95UhiWSjWe5Vhg"
+              alt="Biashara Yetu logo" class="service-icon">
+            <h3>Biashara Yetu</h3>
+            <p>You concentrate on selling, let us concentrate on your taxes.</p>
+            <span class="btn-service">Learn More</span>
+          </a>
+          <a href="/kadipoa" class="service">
+            <img src="https://tuonane-db1b1.web.app/assets/kadipoa-logo.png" alt="KadiPoa logo" class="service-icon">
+            <h3>KadiPoa</h3>
+            <p>Create cards and invite your family and friends to your events.</p>
+            <span class="btn-service">Learn More</span>
+          </a>
+          <a href="/lipachap" class="service">
+            <img src="https://lipachap-c396c.web.app/assets/logo.png" alt="LipaChap logo" class="service-icon">
+            <h3>LipaChap</h3>
+            <p>Pay for your Luku sub-meter bills.</p>
+            <span class="btn-service">Learn More</span>
+          </a>
         </div>
       </div>
     </section>
@@ -115,7 +318,7 @@
       <div class="container">
         <h2>Get In Touch</h2>
         <p>Email: <a href="mailto:yelromenterprises@gmail.com" style="color:#fff;">yelromenterprises@gmail.com</a></p>
-        
+
         <a href="mailto:yelromenterprises@gmail.com" class="btn">Contact Us</a>
       </div>
     </section>
@@ -126,4 +329,5 @@
   </footer>
 
 </body>
+
 </html>
